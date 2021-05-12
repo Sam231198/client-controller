@@ -29,6 +29,10 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/ClientList', [ClientController::class, 'indexCRUD'])->middleware(['auth', 'verified'])->name('clientlist');
+Route::get('/clientform', function () {
+    return Inertia::render('Clintform');
+})->middleware(['auth', 'verified'])->name('clientform');
+
+Route::get('/clientlist', [ClientController::class, 'indexCRUD'])->middleware(['auth', 'verified'])->name('clientlist');
 
 require __DIR__.'/auth.php';

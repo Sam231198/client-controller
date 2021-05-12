@@ -17,8 +17,8 @@ class ClientController extends Controller
 
     public function indexCRUD()
     {
-        $client = $this->clientRep->read();
+        // $client = $this->clientRep->read();
 
-        return Inertia::render('ClientList');
+        return Inertia::render('Clientlist');
     }
 }
