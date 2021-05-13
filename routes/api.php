@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\ProductApiController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::ApiResource('/course', 'CourseController');
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

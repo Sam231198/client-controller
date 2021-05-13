@@ -11,6 +11,20 @@ class ClientApiController extends Controller
 {
     private ClientRepository $clientRep;
 
+/**
+ * @OA\Get(
+ *     path="/index",
+ *     description="Return a Course´s name",
+ *     @OA\Response(
+ *         response=200,
+ *         description="OK",
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Missing Data"
+ *     )
+ * )
+ */
     public function __construct()
     {
         $this->clientRep = new ClientRepository();
