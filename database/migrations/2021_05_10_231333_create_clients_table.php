@@ -17,11 +17,11 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->string('document');
             $table->string('document_type');
-            $table->float('full_name');
+            $table->string('full_name');
             $table->string('display_name');
             $table->string('phone');
-            $table->integer('password');
-            $table->integer('email');
+            $table->string('password');
+            $table->string('email');
             $table->timestamps();
         });
     }

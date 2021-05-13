@@ -9,13 +9,13 @@ class Client extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
+        'full_name',
         'document',
         'document_type',
-        'full_name',
         'display_name',
         'phone',
+        'email',
         'password',
-        'email'
     ];
 }

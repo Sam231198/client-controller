@@ -10,37 +10,48 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-6 bg-white border-b border-gray-200">
-            <form>
+            <div v-for="(error, index) in errors" :key="index">
+              {{ error }}
+            </div>
+
+            <form @submit.prevent="submit">
+              <div>
+                <input type="text" v-model="form.full_name" placeholder="Nome completo" />
+              </div>
+
               <div>
                 <input
-                  id="full_name"
-                  v-model="full_name"
-                  placeholder="Nome completo"
+                 type="text"
+                  v-model="form.display_name"
+                  placeholder="Nome de visualização"
                 />
               </div>
+
               <div>
                 <input
-                  id="type_document"
-                  v-model="type_document"
+                 type="text"
+                  v-model="form.document_type"
                   placeholder="Tipo de documento"
                 />
               </div>
+
               <div>
-                <input
-                  id="document"
-                  v-model="document"
-                  placeholder="Documento"
-                />
+                <input type="text" v-model="form.document" placeholder="Documento" />
               </div>
+
               <div>
-                <input id="phone" v-model="phone" placeholder="Telefone" />
+                <input type="tel" v-model="form.phone" placeholder="Telefone" />
               </div>
+
               <div>
-                <input id="email" v-model="email" placeholder="E-mail" />
+                <input type="email" v-model="form.email" placeholder="E-mail" />
               </div>
+
               <div>
-                <input id="password" v-model="password" placeholder="Senha" />
+                <input type="password" v-model="form.password" placeholder="Senha" />
               </div>
+
+              <button type="submit">Cadastrar</button>
             </form>
           </div>
         </div>
@@ -56,21 +67,27 @@ export default {
   components: {
     BreezeAuthenticatedLayout,
   },
-  data: function () {
+  data() {
     return {
       form: {
         full_name: null,
-        type_documetn: null,
+        document_type: null,
         document: null,
+        display_name: null,
         phone: null,
         email: null,
         password: null,
       },
     };
   },
-  // props: {
-  //     auth: Object,
-  //     errors: Object,
-  // },
+  methods: {
+    submit() {
+      this.$inertia.post("/clientform", this.form);
+    },
+  },
+  props: {
+      // auth: Object,
+      errors: Object,
+  },
 };
 </script>

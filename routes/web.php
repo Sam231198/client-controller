@@ -33,6 +33,8 @@ Route::get('/clientform', function () {
     return Inertia::render('Clintform');
 })->middleware(['auth', 'verified'])->name('clientform');
 
-Route::get('/clientlist', [ClientController::class, 'indexCRUD'])->middleware(['auth', 'verified'])->name('clientlist');
+Route::post('/clientform', [ClientController::class, 'create'])->middleware(['auth', 'verified']);
+
+Route::get('/clientlist', [ClientController::class, 'index'])->middleware(['auth', 'verified'])->name('clientlist');
 
 require __DIR__.'/auth.php';

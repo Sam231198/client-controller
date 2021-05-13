@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Client;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 
 class ClientRepository
 {
@@ -26,7 +26,7 @@ class ClientRepository
     public function create(Request $request)
     {
         try {
-            return $this->client->create($request);
+            return $this->client->create($request->all());
         } catch (\Exception $e) {
             return ["error" => $e->getMessage()];
         }
