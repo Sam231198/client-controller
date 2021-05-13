@@ -15,18 +15,23 @@
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <breeze-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </breeze-nav-link>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <breeze-nav-link :href="route('clientlist')" :active="route().current('clientlist')">
-                                    Lista de cliente
+                                    Lista de clientes
                                 </breeze-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <breeze-nav-link :href="route('clientform')" :active="route().current('clientform')">
                                     Cadastro de cliente
+                                </breeze-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <breeze-nav-link :href="route('productlist')" :active="route().current('clientform')">
+                                    Lista de produtos
+                                </breeze-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <breeze-nav-link :href="route('productform')" :active="route().current('clientform')">
+                                    Cadastro de produto
                                 </breeze-nav-link>
                             </div>
                         </div>
@@ -71,18 +76,23 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <breeze-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </breeze-responsive-nav-link>
-                    </div>
-                    <div class="pt-2 pb-3 space-y-1">
                         <breeze-responsive-nav-link :href="route('clientlist')" :active="route().current('clientlist')">
-                            Lista de cliente
+                            Lista de clientes
                         </breeze-responsive-nav-link>
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
                         <breeze-responsive-nav-link :href="route('clientform')" :active="route().current('clientform')">
                             Cadastro de cliente
+                        </breeze-responsive-nav-link>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <breeze-responsive-nav-link :href="route('productlist')" :active="route().current('clientform')">
+                            Lista de produtos
+                        </breeze-responsive-nav-link>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <breeze-responsive-nav-link :href="route('productform')" :active="route().current('clientform')">
+                            Cadastro de produto
                         </breeze-responsive-nav-link>
                     </div>
 

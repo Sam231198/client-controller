@@ -18,49 +18,41 @@
               <div>
                 <input
                   type="text"
-                  v-model="form.full_name"
-                  placeholder="Nome completo"
+                  v-model="form.name"
+                  placeholder="Nome"
                 />
               </div>
 
               <div>
                 <input
                   type="text"
-                  v-model="form.display_name"
-                  placeholder="Nome de visualização"
+                  v-model="form.description"
+                  placeholder="Descrição"
+                />
+              </div>
+
+              <div>
+                <input
+                  type="number"
+                  v-model="form.price"
+                  placeholder="Preço"
                 />
               </div>
 
               <div>
                 <input
                   type="text"
-                  v-model="form.document_type"
-                  placeholder="Tipo de documento"
+                  v-model="form.sku"
+                  placeholder="Código"
                 />
               </div>
 
               <div>
-                <input
-                  type="text"
-                  v-model="form.document"
-                  placeholder="Documento"
-                />
+                <input type="number" v-model="form.stock_amount" placeholder="number" />
               </div>
 
               <div>
-                <input type="tel" v-model="form.phone" placeholder="Telefone" />
-              </div>
-
-              <div>
-                <input type="email" v-model="form.email" placeholder="E-mail" />
-              </div>
-
-              <div>
-                <input
-                  type="password"
-                  v-model="form.password"
-                  placeholder="Senha"
-                />
+                <input type="number" v-model="form.client_id" placeholder="ID do cliente" />
               </div>
 
               <button type="submit">Enviar</button>
@@ -82,19 +74,21 @@ export default {
   data() {
     return {
       form: {
-        full_name: null,
-        document_type: null,
-        document: null,
-        display_name: null,
-        phone: null,
-        email: null,
-        password: null,
+        name: this.$page.props.product[0].name,
+        description: this.$page.props.product[0].description,
+        price: this.$page.props.product[0].price,
+        sku: this.$page.props.product[0].sku,
+        stock_amount: this.$page.props.product[0].stock_amount,
+        client_id: this.$page.props.product[0].client_id,
       },
     };
   },
   methods: {
     submit() {
-      this.$inertia.post("/clientform", this.form);
+      this.$inertia.put(
+        `/productupdate/${this.$page.props.product[0].id}`,
+        this.form
+      );
     },
   },
   props: {

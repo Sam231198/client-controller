@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Inertia::share('flash', function () {
             return [
+                'clients' => Session::get('clients'),
                 'client' => Session::get('client'),
             ];
         });

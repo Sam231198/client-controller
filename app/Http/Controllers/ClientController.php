@@ -20,21 +20,13 @@ class ClientController extends Controller
     {
         $client = $this->clientRep->read();
 
-        return Inertia::render('Clientlist')->with('client', $client);
+        return Inertia::render('Clientlist')->with('clients', $client);
     }
 
-    public function create(Request $request)
+    public function updateView(int $id)
     {
-        FacadesRequest::validate([
-            'full_name' => ['required', 'string'],
-            'document_type' => ['required', 'string'],
-            'document' => ['required', 'string'],
-            'phone' => ['required', 'numeric'],
-            'display_name' => ['required', 'string'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string']
-        ]);
+        $client = $this->clientRep->clientSelect($id);
 
-        return $this->clientRep->create($request);
+        return Inertia::render('Clintformupdate')->with('client', $client);
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ClientApiController;
+use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,8 +36,23 @@ Route::get('/clientform', function () {
     return Inertia::render('Clintform');
 })->middleware(['auth', 'verified'])->name('clientform');
 
-Route::post('/clientform', [ClientController::class, 'create'])->middleware(['auth', 'verified']);
-
 Route::get('/clientlist', [ClientController::class, 'index'])->middleware(['auth', 'verified'])->name('clientlist');
+Route::get('/clientupdate/{id}', [ClientController::class, 'updateView'])->middleware(['auth', 'verified'])->name('clientupdate');
 
-require __DIR__.'/auth.php';
+Route::post('/clientform', [ClientApiController::class, 'create'])->middleware(['auth', 'verified']);
+Route::put('/clientupdate/{id}', [ClientApiController::class, 'update'])->middleware(['auth', 'verified']);
+Route::delete('/clientdelete/{id}', [ClientApiController::class, 'delete'])->middleware(['auth', 'verified']);
+
+
+Route::get('/productform', function () {
+    return Inertia::render('Productform');
+})->middleware(['auth', 'verified'])->name('productform');
+
+Route::get('/productlist', [ProductController::class, 'index'])->middleware(['auth', 'verified'])->name('productlist');
+Route::get('/productupdate/{id}', [ProductController::class, 'updateView'])->middleware(['auth', 'verified'])->name('productupdate');
+
+Route::post('/productform', [ProductApiController::class, 'create'])->middleware(['auth', 'verified']);
+Route::put('/productupdate/{id}', [ProductApiController::class, 'update'])->middleware(['auth', 'verified']);
+Route::delete('/productdelete/{id}', [ProductApiController::class, 'delete'])->middleware(['auth', 'verified']);
+
+require __DIR__ . '/auth.php';

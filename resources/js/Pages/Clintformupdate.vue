@@ -82,19 +82,22 @@ export default {
   data() {
     return {
       form: {
-        full_name: null,
-        document_type: null,
-        document: null,
-        display_name: null,
-        phone: null,
-        email: null,
-        password: null,
+        full_name: this.$page.props.client[0].full_name,
+        document_type: this.$page.props.client[0].document_type,
+        document: this.$page.props.client[0].document,
+        display_name: this.$page.props.client[0].display_name,
+        phone: this.$page.props.client[0].phone,
+        email: this.$page.props.client[0].email,
+        password: this.$page.props.client[0].password,
       },
     };
   },
   methods: {
     submit() {
-      this.$inertia.post("/clientform", this.form);
+      this.$inertia.put(
+        `/clientupdate/${this.$page.props.client[0].id}`,
+        this.form
+      );
     },
   },
   props: {
