@@ -18,9 +18,9 @@ class ClientController extends Controller
 
     public function index()
     {
-        // $client = $this->clientRep->read();
+        $client = $this->clientRep->read();
 
-        return Inertia::render('Clientlist');
+        return Inertia::render('Clientlist')->with('client', $client);
     }
 
     public function create(Request $request)
