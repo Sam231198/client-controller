@@ -24,6 +24,7 @@ Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->prefix('/client')->group(function () {
     Route::get('/', [ClientApiController::class, 'index']);
+    Route::get('/{id}', [ClientApiController::class, 'selectClient']);
     Route::post('/', [ClientApiController::class, 'create']);
     Route::put('/{id}', [ClientApiController::class, 'update']);
     Route::delete('/{id}', [ClientApiController::class, 'delete']);

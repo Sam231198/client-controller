@@ -24,6 +24,14 @@ class ClientApiController extends Controller
         return response()->json($client, 201);
     }
 
+    public function selectClient(int $id){
+        $client = $this->clientRep->client($id);
+
+        if (isset($client['error'])) return response()->json($client, 500);
+
+        return response()->json($client, 201);
+    }
+
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [

@@ -23,6 +23,24 @@ class ClientRepository
         }
     }
 
+    public function client(int $id)
+    {
+        try {
+
+            $result = $this->client
+                ->where('id', $id)
+                ->get();
+
+            if ($result)
+                return $result;
+            else
+                return ['erro' => 'cliente não encontrado'];
+        } catch (\Exception $e) {
+
+            return ["error" => $e->getMessage()];
+        }
+    }
+
     public function create(Request $request)
     {
         try {
