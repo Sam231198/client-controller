@@ -25,7 +25,7 @@ class ClientApiController extends Controller
     }
 
     public function selectClient(int $id){
-        $client = $this->clientRep->client($id);
+        $client = $this->clientRep->clientSelect($id);
 
         if (isset($client['error'])) return response()->json($client, 500);
 
@@ -48,7 +48,7 @@ class ClientApiController extends Controller
 
         $client = $this->clientRep->create($request);
 
-        if (isset($client['error'])) return response()->json(json_decode($client), 500);
+        if (isset($client['error'])) return response()->json($client, 500);
 
         return response()->json($client, 201);
     }
@@ -69,7 +69,7 @@ class ClientApiController extends Controller
 
         $client = $this->clientRep->update($id, $request);
 
-        if (isset($client['error'])) return response()->json(json_decode($client), 500);
+        if (isset($client['error'])) return response()->json($client, 500);
 
         return response()->json($client, 201);
     }
@@ -78,7 +78,7 @@ class ClientApiController extends Controller
     {
         $client = $this->clientRep->delete($id);
 
-        if (isset($client['error'])) return response()->json(json_decode($client), 500);
+        if (isset($client['error'])) return response()->json($client, 500);
 
         return response()->json(['result' => $client], 201);
     }

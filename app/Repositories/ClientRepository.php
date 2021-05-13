@@ -23,7 +23,7 @@ class ClientRepository
         }
     }
 
-    public function client(int $id)
+    public function clientSelect(int $id)
     {
         try {
 

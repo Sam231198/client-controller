@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientApiController;
+use App\Http\Controllers\ProductApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,13 @@ Route::middleware('auth:sanctum')->prefix('/client')->group(function () {
     Route::post('/', [ClientApiController::class, 'create']);
     Route::put('/{id}', [ClientApiController::class, 'update']);
     Route::delete('/{id}', [ClientApiController::class, 'delete']);
+});
+
+Route::middleware('auth:sanctum')->prefix('/product')->group(function () {
+    Route::get('/', [ProductApiController::class, 'index']);
+    Route::get('/{id}', [ProductApiController::class, 'selectProduct']);
+    Route::post('/', [ProductApiController::class, 'create']);
+    Route::put('/{id}', [ProductApiController::class, 'update']);
+    Route::delete('/{id}', [ProductApiController::class, 'delete']);
 });
 
