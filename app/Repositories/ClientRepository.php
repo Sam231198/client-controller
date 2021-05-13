@@ -35,10 +35,17 @@ class ClientRepository
     public function update(int $id, Request $request)
     {
         try {
-            return $this->client
+
+            $result = $this->client
                 ->where('id', $id)
-                ->update($request);
+                ->update($request->all());
+
+            if ($result)
+                return $this->client->where('id', $id)->get();
+            else
+                return ['erro' => 'cliente não encontrado'];
         } catch (\Exception $e) {
+
             return ["error" => $e->getMessage()];
         }
     }
