@@ -17,4 +17,8 @@ class Product extends Model
         'stock_amount',
         'client_id'
     ];
+
+    function client(){
+        return $this->hasOne(Client::class);
+    }
 }

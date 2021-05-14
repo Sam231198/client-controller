@@ -18,4 +18,8 @@ class Client extends Model
         'email',
         'password',
     ];
+
+    function product(){
+        return $this->hasMany(Product::class);
+    }
 }
